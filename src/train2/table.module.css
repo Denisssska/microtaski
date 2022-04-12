@@ -1,0 +1,18 @@
+.button{
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: maroon;
+}
+
+
+.tr{
+    background-color: darkcyan;
+    border :2px solid black;
+
+}
+.tbody{
+    background-color: skyblue;
+    border :2px solid black;
+
+}
