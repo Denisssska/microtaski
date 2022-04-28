@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    justify-content: center;
+
+}
+.green{
+    background-color: green;
+    margin: 10px;
+    box-shadow: 0px 18px 22px 4px #2b8320;
+}
+.red{
+    background-color: red;
+    margin: 10px;
+    box-shadow: 0px -18px 22px 4px #e01010;
+}
+.yellow{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: yellow;
+}
+.gray{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: gray;
+}
+

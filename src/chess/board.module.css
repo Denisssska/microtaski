@@ -1,0 +1,61 @@
+.container {
+    width: auto;
+
+}
+
+.table {
+    background-color: white;
+    border: 1px solid black;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+/*вот так сделал шахматную доску :) */
+tr:first-child td:nth-child(odd) {
+    border: 1px solid black;
+    background: black;
+}
+
+tr:nth-child(2) td:nth-child(even) {
+    border: 1px solid black;
+    background: black;
+}
+
+tr:nth-child(3) td:nth-child(odd) {
+    border: 1px solid black;
+    background: black;
+}
+
+tr:nth-child(4) td:nth-child(even) {
+    border: 1px solid black;
+    background: black;
+}
+
+tr:nth-child(5) td:nth-child(odd) {
+    border: 1px solid black;
+    background: black;
+}
+
+tr:nth-child(6) td:nth-child(even) {
+    border: 1px solid black;
+    background: black;
+}
+
+tr:nth-child(7) td:nth-child(odd) {
+    border: 1px solid black;
+    background: black;
+}
+
+tr:nth-child(8) td:nth-child(even) {
+    border: 1px solid black;
+    background: black;
+}
+
+
+
+
+
+
