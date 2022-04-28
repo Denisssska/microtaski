@@ -7,11 +7,13 @@
 
 
 .tr{
+    color :white;
     background-color: darkcyan;
     border :2px solid black;
 
 }
 .tbody{
+    color: white;
     background-color: skyblue;
     border :2px solid black;
 

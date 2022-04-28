@@ -8,8 +8,12 @@ type TablePropsType = {
 type CarsPropsType = {
     cars: Array<TablePropsType>
     remFun:(id:number)=>void
+    error:string |null
 }
 export const Table = (props: CarsPropsType) => {
+
+
+
     /////////////////////////delete auto
     const removeFunction=(id:number)=>{
         props.remFun(id)
@@ -31,7 +35,7 @@ export const Table = (props: CarsPropsType) => {
                 {props.cars.map((item, index) =>
                     <tbody>
                     <tr className={c.tbody}>
-                        <td><button className={c.button} onClick={()=>removeFunction(index)}></button></td>
+                        <td><button className={c.button} onClick={()=>removeFunction(index)}>+</button></td>
                         <td>{index + 1}</td>
                         <td>{item.manufacturer}</td>
                         <td>{item.model}</td>
@@ -40,6 +44,7 @@ export const Table = (props: CarsPropsType) => {
                     </tbody>
                 )}
             </table>
+            {props.error && <div>{props.error}</div>}
         </div>
     );
 };

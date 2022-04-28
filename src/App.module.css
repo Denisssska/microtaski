@@ -1,9 +1,5 @@
 .header{
+    margin: 30px;
     display:flex;
-}
-.newcom{
-    margin-top: 100px;
-}
-.only{
-    margin:20px;
+    justify-content: space-between;
 }

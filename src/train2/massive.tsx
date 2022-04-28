@@ -15,16 +15,23 @@ export const Massive = () => {
     ])
     let [auto, setAuto] = useState('')
     let [model, setModel] = useState('')
+    let [error, setError] = useState<string|null>('')
 
     const funcAdd = (auto: string, model: string) => {
+        if (auto.trim() === '' && model.trim() === '') {
+            setError('Please enter text')
+            return
+        }
         let newcar = {manufacturer: auto, model: model}
         setCars([...cars, newcar])
+
     }
 
     const visovFuncAdd = () => {
         funcAdd(auto, model)
         setAuto('')
         setModel('')
+
     }
 /////delete auto//////////////////////////////////////////////////////////////////
     const remFun = (id: number) => {
@@ -39,8 +46,8 @@ export const Massive = () => {
     }
     return (
         <div>
-            <Table remFun={remFun} cars={cars}/>
-            <OnlyInput auto={auto} setAuto={setAuto} model={model} setModel={setModel}/>
+            <Table remFun={remFun} cars={cars} error={error} />
+            <OnlyInput auto={auto} setAuto={setAuto} model={model} setModel={setModel} setError={setError}/>
 
             <Onlybutton name='add' callBack={visovFuncAdd}/>
             <Onlybutton name='filter' callBack={filteredFunction}/>
