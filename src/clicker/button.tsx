@@ -9,6 +9,8 @@ type ButtonType = {
 export const Button: React.FC<ButtonType> = ({click, name, callBack}) => {
     return (
         <span>
+
+            {/* eslint-disable-next-line no-mixed-operators */}
             <button disabled={click === 0 && name === 'remove' || click === 5 && name === 'add'}
                     className={name === 'add' ? c.button1 : c.button2}
 

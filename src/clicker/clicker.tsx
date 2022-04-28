@@ -17,7 +17,7 @@ export const Clicker = () => {
     }
 
     return (
-        <div className={c.globo}>
+        <div className={c.global}>
             <div className={c.head}>
                 <div className={click === 5 ? c.countRed : c.count}>{click}</div>
                 <Button click={click}  name='add' callBack={addHandler}/>
