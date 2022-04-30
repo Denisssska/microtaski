@@ -1,21 +1,10 @@
-/*.global{*/
-/*    margin-top: 45px;*/
-/*    border: 3px solid black;*/
-/*    border-radius: 5px;*/
-/*    width: 200px;*/
-/*    height: 86px;*/
-/*    padding-bottom: 53px;*/
-/*    box-shadow: 0 0 20px 10px black*/
-/*}*/
-
 .head {
 
-    box-shadow: 0 0 10px 5px aqua;
+    box-shadow: 0 0 20px 10px aqua;
     padding: 10px;
     border-radius: 5px;
     background-color: #0e131f;
-    margin-top:45px;
-
+    margin-top:30px;
 }
 
 .count {
@@ -23,21 +12,25 @@
     border: 3px solid aqua;
     background-color: aqua;
     border-radius: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 48px;
     text-align: center;
     font-size: 40px;
     box-shadow: 0 0 5px 2px aqua;
     font-weight: bold;
+    padding-bottom: 4px;
+
 }.countRed {
     border: 3px solid aqua;
     background-color: aqua;
     border-radius: 5px;
-    margin-bottom: 15px;
+     margin-bottom: 48px;
      text-align: center;
     font-size: 40px;
     box-shadow: 0 0 5px 2px aqua;
     font-weight: bold;
     color:red;
+     padding-bottom: 4px;
+
 }
 .buttons{
     display: flex;
@@ -45,7 +38,7 @@
 }
 .button1, .button2 {
     height: 30px;
-    width: 150px;
+    width: 90px;
     background-color: darkcyan;
     color: aquamarine;
     border-radius: 5px;

@@ -1,9 +1,8 @@
 import React, {ChangeEvent, useState} from 'react';
-import {CorrectValue} from "../dualClicker/CorrectValue";
-import {Count} from "./Count";
+import {CorrectValue} from "./CorrectValue";
+import {RealizationCount} from "./RealizationCount";
 
-
-export const Clicker = () => {
+export const DualClicker = () => {
     let [checkNumberMax, setCheckNumberMax] = useState<number>(0)
     let [checkNumberStart, setCheckNumberStart] = useState<number>(0)
     let [error, setError] = useState(false)
@@ -38,21 +37,24 @@ export const Clicker = () => {
             localStorage.setItem('MaxNumber', JSON.stringify(checkNumberMax))
         }
     }
+
+
     return (
         <div>
-            <Count
+            {nuance && <RealizationCount
                 addHandler={addHandler}
+                sentCheckNumber={sentCheckNumber}
                 checkNumberMax={checkNumberMax}
                 click={click} error={error}
-                removeHandler={removeHandler}/>
+                removeHandler={removeHandler}/>}
 
-            <CorrectValue
+            {!nuance && <CorrectValue
                 checkNumberStart={checkNumberStart}
                 setError={setError} error={error}
                 checkNumberOne={checkNumberOne}
                 checkNumberTwo={checkNumberTwo}
                 checkNumberMax={checkNumberMax}
-                sentCheckNumber={sentCheckNumber}/>
+                sentCheckNumber={sentCheckNumber}/>}
         </div>
     );
 };
