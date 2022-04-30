@@ -1,21 +1,25 @@
 import React from 'react';
-import c from './clicker.module.css'
+import style from '../dualClicker/DualClicker.module.css'
 
 type ButtonType = {
     name: string
     callBack: () => void
-    click: number
+    click?: number
+    checkNumberMax?: number
+    checkNumberStart?:number
+    error?:boolean
 }
-export const Button: React.FC<ButtonType> = ({click, name, callBack}) => {
+export const Button: React.FC<ButtonType> = ({error, checkNumberStart,checkNumberMax, click, name, callBack}) => {
     return (
-        <span>
+        <div>
 
             {/* eslint-disable-next-line no-mixed-operators */}
-            <button disabled={click === 0 && name === 'remove' || click === 5 && name === 'add'}
-                    className={name === 'add' ? c.button1 : c.button2}
-
+            <button disabled={error  ||  name === 'sent' && checkNumberStart === 0 && checkNumberMax === 0 ||
+                // eslint-disable-next-line no-mixed-operators
+                click === 0 && name === 'remove' || click === checkNumberMax && name === 'add'}
+                    className={name === 'add' ? style.button1 : style.button2}
                     onClick={callBack}>{name}</button>
-        </span>
+        </div>
     );
 };
 

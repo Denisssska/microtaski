@@ -1,12 +1,12 @@
-.global {
-    margin:40px;
-    border: 3px solid black;
-    border-radius: 5px;
-    width: 200px;
-    height: 100px;
-    padding-bottom: 53px;
-    box-shadow: 0 0 20px 10px black
-}
+/*.global{*/
+/*    margin-top: 45px;*/
+/*    border: 3px solid black;*/
+/*    border-radius: 5px;*/
+/*    width: 200px;*/
+/*    height: 86px;*/
+/*    padding-bottom: 53px;*/
+/*    box-shadow: 0 0 20px 10px black*/
+/*}*/
 
 .head {
 
@@ -14,48 +14,96 @@
     padding: 10px;
     border-radius: 5px;
     background-color: #0e131f;
-    margin: 0;
+    margin-top:45px;
 
 }
 
 .count {
+    display: block;
     border: 3px solid aqua;
     background-color: aqua;
     border-radius: 5px;
-    margin-bottom: 30px;
-    padding-left: 70px;
-    font-size: 50px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 40px;
     box-shadow: 0 0 5px 2px aqua;
     font-weight: bold;
 }.countRed {
     border: 3px solid aqua;
     background-color: aqua;
     border-radius: 5px;
-    margin-bottom: 30px;
-    padding-left: 70px;
-    font-size: 50px;
+    margin-bottom: 15px;
+     text-align: center;
+    font-size: 40px;
     box-shadow: 0 0 5px 2px aqua;
     font-weight: bold;
     color:red;
 }
-
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
 .button1, .button2 {
     height: 30px;
-    width: 80px;
+    width: 150px;
     background-color: darkcyan;
     color: aquamarine;
-    padding: 0;
-
     border-radius: 5px;
 
 }
 
-.button2 {
-    margin-left: 14px;
-}
 .button1:enabled,.button2:enabled{
     box-shadow: 0 0 10px 5px #67b3dd
 }
 .button1:disabled,.button2:disabled{
     opacity: 50%;
 }
+
+.counterInput{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid aqua;
+    padding:10px  10px;
+    border-radius: 10px;
+    margin:10px 10px;
+    box-shadow: 0 0 5px 2px aqua;
+    background-color: #0e131f;
+    justify-content: space-around;
+
+}
+.counterButton{
+    box-shadow: 0 0 5px 2px aqua;
+    display: flex;
+    justify-content: center;
+    padding:18px  30px;
+    border: 1px solid aqua;
+    border-radius: 5px;
+    margin: 18px 10px 14px 10px;
+    background-color: #0e131f;
+}
+.counterValue {
+    background-color: #0e131f;
+    margin-top:30px;
+    border: 3px solid darkcyan;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 10px aqua;
+
+}
+.input{
+    box-shadow: 0 0 5px 2px aqua;
+    border: 1px solid aqua;
+    border-radius: 5px;
+    margin-right: 1px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}.inputRed{
+    box-shadow: 0 0 5px 2px red;
+    border: 1px solid red;
+    background-color: deeppink;
+    border-radius: 5px;
+    margin-right: 1px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.text{color:white}
