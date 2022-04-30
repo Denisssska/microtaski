@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import {CorrectValue} from "../dualClicker/CorrectValue";
 import {Count} from "./Count";
 
@@ -7,7 +7,20 @@ export const Clicker = () => {
     let [checkNumberMax, setCheckNumberMax] = useState<number>(0)
     let [checkNumberStart, setCheckNumberStart] = useState<number>(0)
     let [error, setError] = useState(false)
-    let [nuance, setNuance] = useState(true)
+
+    useEffect(()=>{
+        localStorage.setItem('start', JSON.stringify(checkNumberStart))
+    },[checkNumberStart])
+
+    useEffect(()=>{
+        localStorage.setItem('Max', JSON.stringify(checkNumberMax))
+    },[checkNumberMax])
+
+    useEffect(()=>{
+        let lastStartNumber = localStorage.getItem('start')
+        if (lastStartNumber)
+            setClick(JSON.parse(lastStartNumber))
+    },[])
     const checkNumberOne = (event: ChangeEvent<HTMLInputElement>) => {
         setCheckNumberMax(+event.currentTarget.value)
 
@@ -19,23 +32,18 @@ export const Clicker = () => {
     let [click, setClick] = useState(0)
     const addHandler = () => {
         setClick(++click)
-
-
     }
     const removeHandler = () => {
-        let lastStartNumber = localStorage.getItem('startNumber')
+        let lastStartNumber = localStorage.getItem('start')
         if (lastStartNumber)
             setClick(JSON.parse(lastStartNumber))
     }
     const sentCheckNumber = () => {
         if (checkNumberStart >= checkNumberMax) {
             setError(true)
-            setNuance(!nuance)
+
         } else {
             setClick(checkNumberStart)
-            setNuance(!nuance)
-            localStorage.setItem('startNumber', JSON.stringify(checkNumberStart))
-            localStorage.setItem('MaxNumber', JSON.stringify(checkNumberMax))
         }
     }
     return (
