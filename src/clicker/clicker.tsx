@@ -7,23 +7,23 @@ export const Clicker = () => {
     let [checkNumberMax, setCheckNumberMax] = useState<number>(0)
     let [checkNumberStart, setCheckNumberStart] = useState<number>(0)
     let [error, setError] = useState(false)
-
-    useEffect(()=>{
-        localStorage.setItem('start', JSON.stringify(checkNumberStart))
-    },[checkNumberStart])
-
-    useEffect(()=>{
-        localStorage.setItem('Max', JSON.stringify(checkNumberMax))
-    },[checkNumberMax])
+    let[info,setInfo]=useState(true)
 
     useEffect(()=>{
         let lastStartNumber = localStorage.getItem('start')
         if (lastStartNumber)
-            setClick(JSON.parse(lastStartNumber))
+            setCheckNumberStart(JSON.parse(lastStartNumber))
     },[])
+    useEffect(()=>{
+        let lastMaxNumber = localStorage.getItem('Max')
+        if (lastMaxNumber)
+            setCheckNumberMax(JSON.parse(lastMaxNumber))
+    },[])
+
+
     const checkNumberOne = (event: ChangeEvent<HTMLInputElement>) => {
         setCheckNumberMax(+event.currentTarget.value)
-
+        setInfo(true)
     }
     const checkNumberTwo = (event: ChangeEvent<HTMLInputElement>) => {
         setCheckNumberStart(+event.currentTarget.value)
@@ -43,12 +43,16 @@ export const Clicker = () => {
             setError(true)
 
         } else {
+            setInfo(false)
             setClick(checkNumberStart)
+            localStorage.setItem('start', JSON.stringify(checkNumberStart))
+            localStorage.setItem('Max', JSON.stringify(checkNumberMax))
         }
     }
     return (
         <div>
             <Count
+                info={info}
                 addHandler={addHandler}
                 checkNumberMax={checkNumberMax}
                 click={click} error={error}

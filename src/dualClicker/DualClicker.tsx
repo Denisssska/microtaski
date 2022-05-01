@@ -9,17 +9,13 @@ export const DualClicker = () => {
     let [nuance, setNuance] = useState(true)
     const checkNumberOne = (event: ChangeEvent<HTMLInputElement>) => {
         setCheckNumberMax(+event.currentTarget.value)
-
     }
     const checkNumberTwo = (event: ChangeEvent<HTMLInputElement>) => {
         setCheckNumberStart(+event.currentTarget.value)
     }
-
     let [click, setClick] = useState(0)
     const addHandler = () => {
         setClick(++click)
-
-
     }
     const removeHandler = () => {
         let lastStartNumber = localStorage.getItem('startNumber')

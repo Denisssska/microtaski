@@ -8,18 +8,18 @@ type ButtonType = {
     checkNumberMax?: number
     error?: boolean
     checkNumberStart?: number
+    info?:boolean
 }
-export const Button: React.FC<ButtonType> = ({
+export const Button: React.FC<ButtonType> = ({info,
                                                  error, checkNumberMax,
                                                  click, name, callBack
                                              }) => {
     return (
         <div>
 
-            {/* eslint-disable-next-line no-mixed-operators */}
-            <button disabled={error && name === 'setV' ||
-                // eslint-disable-next-line no-mixed-operators
-                click === 0 && name === 'remove' || click === checkNumberMax && name === 'add'}
+            <button disabled={(error && name === 'setV')|| (info && name === 'add')||(info && name === 'remove')||
+                (click === checkNumberMax && name === 'add')}
+
                     className={name === 'add' ? style.button1 : style.button2}
                     onClick={callBack}>{name}</button>
         </div>
