@@ -14,6 +14,7 @@ export const Button: React.FC<ButtonType> = ({info,
                                                  error, checkNumberMax,
                                                  click, name, callBack
                                              }) => {
+
     return (
         <div>
 

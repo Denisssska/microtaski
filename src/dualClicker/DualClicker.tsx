@@ -1,57 +1,80 @@
-import React, {ChangeEvent, useState} from 'react';
+import React from 'react';
 import {CorrectValue} from "./CorrectValue";
 import {RealizationCount} from "./RealizationCount";
+import {Count} from "../clicker/Count";
+import {useDispatch, useSelector} from "react-redux";
+import {StateAppCountType} from "../countReducers/reduxStore";
+import {
+    addClickHandlerAC, changeErrorAC,
+    checkNumberOneAC,
+    checkNumberTwoAC,
+    InitialCountStateType, removeHandlerAC, sentCheckNumberAC
+} from "../countReducers/countReducer";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Navigation} from "./Navigation";
 
 export const DualClicker = () => {
-    let [checkNumberMax, setCheckNumberMax] = useState<number>(0)
-    let [checkNumberStart, setCheckNumberStart] = useState<number>(0)
-    let [error, setError] = useState(false)
-    let [nuance, setNuance] = useState(true)
-    const checkNumberOne = (event: ChangeEvent<HTMLInputElement>) => {
-        setCheckNumberMax(+event.currentTarget.value)
+    const countState = useSelector<StateAppCountType>(state => state.count) as InitialCountStateType
+    const dispatch = useDispatch()
+
+    const checkNumberOne = (value: number) => {
+        dispatch(checkNumberOneAC(value))
     }
-    const checkNumberTwo = (event: ChangeEvent<HTMLInputElement>) => {
-        setCheckNumberStart(+event.currentTarget.value)
+    const checkNumberTwo = (value: number) => {
+        dispatch(checkNumberTwoAC(value))
     }
-    let [click, setClick] = useState(0)
     const addHandler = () => {
-        setClick(++click)
+        dispatch(addClickHandlerAC())
     }
     const removeHandler = () => {
-        let lastStartNumber = localStorage.getItem('startNumber')
-        if (lastStartNumber)
-            setClick(JSON.parse(lastStartNumber))
+        dispatch(removeHandlerAC())
     }
     const sentCheckNumber = () => {
-        if (checkNumberStart >= checkNumberMax) {
-            setError(true)
-            setNuance(!nuance)
-        } else {
-            setClick(checkNumberStart)
-            setNuance(!nuance)
-            localStorage.setItem('startNumber', JSON.stringify(checkNumberStart))
-            localStorage.setItem('MaxNumber', JSON.stringify(checkNumberMax))
-        }
+        dispatch(sentCheckNumberAC())
     }
-
-
+    const changeError = (value: boolean) => {
+        dispatch(changeErrorAC(value))
+    }
     return (
-        <div>
-            {nuance && <RealizationCount
-                addHandler={addHandler}
-                sentCheckNumber={sentCheckNumber}
-                checkNumberMax={checkNumberMax}
-                click={click} error={error}
-                removeHandler={removeHandler}/>}
+        <BrowserRouter>
+            <Navigation/>
+            <Routes>
+                <Route path={'/first/*'} element={<div>
+                    {countState.nuance && <RealizationCount
+                        addHandler={addHandler}
+                        sentCheckNumber={sentCheckNumber}
+                        checkNumberMax={countState.checkNumberMax}
+                        click={countState.click} error={countState.error}
+                        removeHandler={removeHandler}/>}
 
-            {!nuance && <CorrectValue
-                checkNumberStart={checkNumberStart}
-                setError={setError} error={error}
-                checkNumberOne={checkNumberOne}
-                checkNumberTwo={checkNumberTwo}
-                checkNumberMax={checkNumberMax}
-                sentCheckNumber={sentCheckNumber}/>}
-        </div>
+                    {!countState.nuance && <CorrectValue
+                        checkNumberStart={countState.checkNumberStart}
+                        changeError={(value) => changeError(value)} error={countState.error}
+                        checkNumberOne={checkNumberOne}
+                        checkNumberTwo={checkNumberTwo}
+                        checkNumberMax={countState.checkNumberMax}
+                        sentCheckNumber={sentCheckNumber}/>}
+                </div>
+                }/>
+                <Route path={'/second/*'} element={<div>
+                        <Count
+                            info={countState.nuance}
+                            addHandler={addHandler}
+                            checkNumberMax={countState.checkNumberMax}
+                            click={countState.click} error={countState.error}
+                            removeHandler={removeHandler}/>
+
+                        <CorrectValue
+                            checkNumberStart={countState.checkNumberStart}
+                            changeError={(value) => changeError(value)} error={countState.error}
+                            checkNumberOne={checkNumberOne}
+                            checkNumberTwo={checkNumberTwo}
+                            checkNumberMax={countState.checkNumberMax}
+                            sentCheckNumber={sentCheckNumber}/>
+                    </div>
+                }/>
+            </Routes>
+        </BrowserRouter>
     );
 };
 

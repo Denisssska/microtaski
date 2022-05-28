@@ -1,20 +1,20 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import style from "./DualClicker.module.css"
 import {Input} from "../clicker/correctionClicker/input";
 import {Button} from "../clicker/button";
 
 type CorrectValueType = {
-    setError: (value: boolean) => void
+    changeError:(value:boolean)=>void
     error: boolean
-    checkNumberOne: (event: ChangeEvent<HTMLInputElement>) => void
-    checkNumberTwo: (event: ChangeEvent<HTMLInputElement>) => void
+    checkNumberOne: (value:number) => void
+    checkNumberTwo: (value:number) => void
     checkNumberMax: number
-    sentCheckNumber: () => void
+    sentCheckNumber: (checkNumberStart:number) => void
     checkNumberStart: number
 }
 export const CorrectValue: React.FC<CorrectValueType> = ({
                                                              checkNumberStart,
-                                                             setError, error,
+                                                             changeError, error,
                                                              checkNumberOne, checkNumberTwo,
                                                              checkNumberMax,
                                                              sentCheckNumber
@@ -25,20 +25,21 @@ export const CorrectValue: React.FC<CorrectValueType> = ({
                 <div className={style.counterInput}>
                     <div>
                         <span className={style.text}>max value:</span>
-                        <Input setError={setError} error={error}
+                        <Input changeError={(value)=>changeError(value)} error={error}
                                value={checkNumberMax}
-                               checkNumberOne={(event) => checkNumberOne(event)}/>
+                               checkNumberOne={(value) => checkNumberOne(value)}/>
                     </div>
                     <div><span className={style.text}>start value:</span>
                         <Input value={checkNumberStart}
-                               setError={setError} error={error}
-                               checkNumberTwo={(event) => checkNumberTwo(event)}/>
+                               changeError={(value)=>changeError(value)} error={error}
+                               checkNumberTwo={(value) => checkNumberTwo(value)}/>
                     </div>
                 </div>
                 <div className={style.counterButton}>
                     <Button error={error}
                             checkNumberMax={checkNumberMax}
-                            callBack={sentCheckNumber} name='setV'/>
+                            checkNumberStart={checkNumberStart}
+                            callBack={()=>sentCheckNumber(checkNumberStart)} name='setV'/>
                 </div>
 
             </div>

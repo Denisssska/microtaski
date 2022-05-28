@@ -2,23 +2,23 @@ import React, {ChangeEvent} from 'react';
 import style from '../.././dualClicker/DualClicker.module.css'
 
 type InputType = {
-    checkNumberOne?: (event: ChangeEvent<HTMLInputElement>) => void
-    checkNumberTwo?: (event: ChangeEvent<HTMLInputElement>) => void
+    checkNumberOne?: (value:number) => void
+    checkNumberTwo?: (value:number) => void
     error?: boolean
-    setError: (value: boolean) => void
+    changeError:(value:boolean)=>void
     value: number
 }
-export const Input: React.FC<InputType> = ({value, setError, error, checkNumberOne, checkNumberTwo}) => {
+export const Input: React.FC<InputType> = ({value, changeError, error, checkNumberOne, checkNumberTwo}) => {
 
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
 
         if (checkNumberOne) {
-            checkNumberOne(event)
-            setError(false)
+            checkNumberOne(+event.currentTarget.value)
+            changeError(false)
         }
         if (checkNumberTwo) {
-            checkNumberTwo(event)
-            setError(false)
+            checkNumberTwo(+event.currentTarget.value)
+            changeError(false)
         }
 
     }

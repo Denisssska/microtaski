@@ -4,8 +4,8 @@ import c from './App.module.css'
 import {Massive} from "./train2/massive";
 import {Board} from "./chess/board";
 import {DualClicker} from "./dualClicker/DualClicker";
-import {Star} from "./train/star";
-import {Clicker} from "./clicker/clicker";
+
+
 
 
 function App() {
@@ -13,9 +13,9 @@ function App() {
         <div className={c.header}>
             <Massive/>
             <div>
-                <Star/>
+                {/*<Star/>*/}
                 <DualClicker/>
-                <Clicker/>
+                {/*<Clicker/>*/}
 
                 {/*<OnOff/>*/}
                 {/*<Buble/>*/}

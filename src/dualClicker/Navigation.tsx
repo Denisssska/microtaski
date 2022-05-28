@@ -1,41 +1,16 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {Button} from "../clicker/button";
 
-type NavigationType = {
 
-    name: string
-    error?: boolean
-    checkNumberStart?: number
-    checkNumberMax?: number
-    sentCheckNumber: () => void
-}
-export const Navigation: React.FC<NavigationType> = ({
-                                                         name,
-                                                         sentCheckNumber,
-                                                         checkNumberMax,
-                                                         checkNumberStart,
-                                                         error
-                                                     }) => {
+export const Navigation = () => {
     return (
         <nav>
-            {name=== 'setV'?<NavLink to='/RealizationCount'>
-                <Button  name={name}
-                        callBack={sentCheckNumber}
-                        error={error}
-                        checkNumberStart={checkNumberStart}
-                        checkNumberMax={checkNumberMax}
-                />
-
-            </NavLink>:
-            <NavLink to='/CorrectValue'>
-                <Button name={name}
-                        callBack={sentCheckNumber}
-                        error={error}
-                        checkNumberStart={checkNumberStart}
-                        checkNumberMax={checkNumberMax}
-                />
-            </NavLink>}
+            <div>
+                <NavLink  style={({ isActive }) =>({color:isActive ? " white" : "yellow"})} to='/first'>First count</NavLink>
+            </div>
+            <div>
+                <NavLink style={({ isActive }) =>({color: isActive ? 'white' : 'yellow'})} to='/second'>Second count</NavLink>
+            </div>
         </nav>
     );
 };
