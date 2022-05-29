@@ -8,9 +8,10 @@ type RealizationCountType = {
     addHandler: () => void
     checkNumberMax: number
     removeHandler: () => void
-info:boolean
+    info: boolean
 }
-export const Count: React.FC<RealizationCountType> = ({info,
+export const Count: React.FC<RealizationCountType> = ({
+                                                          info,
                                                           click, error,
                                                           addHandler,
                                                           checkNumberMax, removeHandler

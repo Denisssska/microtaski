@@ -1,12 +1,12 @@
 import {countReducer} from "./countReducer";
-import {applyMiddleware, combineReducers, legacy_createStore} from "redux";
+import { combineReducers, legacy_createStore} from "redux";
 import {loadState, saveState} from "./utils/localStorage.utils";
 
 export type StateAppCountType = ReturnType<typeof reducersBox>
 const reducersBox = combineReducers({
   count:countReducer
 })
-let store = legacy_createStore(reducersBox,loadState(),applyMiddleware())
+let store = legacy_createStore(reducersBox,loadState())
 export type StoreType = typeof store;
 
 store.subscribe(()=>{

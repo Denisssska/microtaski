@@ -2,7 +2,7 @@ import {StateAppCountType} from "../reduxStore";
 
 export const loadState=()=>{
     try{
-        const serializedState = localStorage.getItem('app-state');
+        const serializedState = localStorage.getItem('state after subscriber');
         if(serializedState === null){
             return undefined
         }
@@ -15,7 +15,7 @@ export const loadState=()=>{
 export const saveState =(state:StateAppCountType)=>{
    try {
        const serializedState = JSON.stringify(state);
-       loadState().setItem('app-state',serializedState);
+       localStorage.setItem('state after subscriber',serializedState);
    } catch {
 
    }

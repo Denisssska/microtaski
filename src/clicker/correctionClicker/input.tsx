@@ -13,11 +13,11 @@ export const Input: React.FC<InputType> = ({value, changeError, error, checkNumb
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
 
         if (checkNumberOne) {
-            checkNumberOne(+event.currentTarget.value)
+            checkNumberOne(Math.floor(+event.currentTarget.value))
             changeError(false)
         }
         if (checkNumberTwo) {
-            checkNumberTwo(+event.currentTarget.value)
+            checkNumberTwo(Math.floor(+event.currentTarget.value))
             changeError(false)
         }
 
@@ -31,6 +31,7 @@ export const Input: React.FC<InputType> = ({value, changeError, error, checkNumb
                    placeholder='insert '
                    min='0'
                    max='10'
+
             />
         </span>
     );
